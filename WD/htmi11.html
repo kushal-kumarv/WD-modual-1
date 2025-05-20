@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS House</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: conic-gradient(
+                from 0deg at 50% 40%,
+                #87CEEB, #E0F7FA, #87CEEB
+            );
+            overflow: hidden;
+        }
+
+        .scene {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        /* Sun with conic-gradient */
+        .sun {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            right: 50px;
+            top: 50px;
+            background: conic-gradient(
+                from 0deg,
+                #FFD700 0deg 90deg,
+                #FF8C00 90deg 180deg,
+                #FF4500 180deg 270deg,
+                #FFD700 270deg 360deg
+            );
+            border-radius: 50%;
+            box-shadow: 0 0 40px #FFD700;
+            z-index: 1;
+        }
+
+        /* House with clip-path */
+        .house {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 200px;
+        }
+
+        /* Roof with clip-path */
+        .roof {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Walls with backdrop-filter */
+        .walls {
+            width: 80%;
+            height: 150px;
+            background: rgba(245, 222, 179, 0.8);
+            margin: 0 auto;
+            position: relative;
+            top: -5px;
+            backdrop-filter: blur(2px);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        /* Door with aspect-ratio */
+        .door {
+            width: 50px;
+            aspect-ratio: 1/2;
+            background: linear-gradient(160deg, #8B4513, #A0522D, #8B4513);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px 5px 0 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .door-knob {
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(#FFD700, #FF8C00);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            right: 5px;
+        }
+
+        /* Windows with mix-blend-mode */
+        .window {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ADD8E6, #87CEFA);
+            border: 3px solid #000;
+            position: absolute;
+            mix-blend-mode: multiply;
+        }
+
+        .window.left {
+            top: 30px;
+            left: 30px;
+        }
+
+        .window.right {
+            top: 30px;
+            right: 30px;
+        }
+
+        .window-pane {
+            position: absolute;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .horizontal-pane {
+            width: 100%;
+            height: 2px;
+            top: 50%;
+        }
+
+        .vertical-pane {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+        }
+
+        /* Chimney */
+        .chimney {
+            width: 25px;
+            height: 60px;
+            background: linear-gradient(#A0522D, #8B4513);
+            position: absolute;
+            right: 40px;
+            top: -40px;
+            z-index: 4;
+        }
+        /* Ground */
+        .ground {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(#228B22, #2E8B57);
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+            clip-path: polygon(0% 20%, 10% 0%, 20% 30%, 30% 10%, 40% 20%, 50% 0%, 60% 15%, 70% 0%, 80% 20%, 90% 5%, 100% 25%, 100% 100%, 0% 100%);
+        }
+
+        /* Smoke animation */
+        .smoke {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            right: 45px;
+            top: -80px;
+            animation: smoke 4s infinite ease-out;
+            z-index: 5;
+        }
+
+        .smoke:nth-child(2) {
+            width: 12px;
+            height: 12px;
+            animation-delay: 1s;
+            top: -90px;
+        }
+
+        .smoke:nth-child(3) {
+            width: 8px;
+            height: 8px;
+            animation-delay: 2s;
+            top: -85px;
+        }
+
+        @keyframes smoke {
+            0% { transform: translateY(0) scale(1); opacity: 0.7; }
+            50% { transform: translateY(-50px) scale(1.5); opacity: 0.4; }
+            100% { transform: translateY(-100px) scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="sun"></div>
+        <div class="house">
+            <div class="roof"></div>
+            <div class="chimney"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="walls">
+                <div class="door">
+                    <div class="door-knob"></div>
+                </div>
+                <div class="window left">
+                    <div class="window-pane horizontal-pane"></div>
+                    <div class="window-pane vertical-pane"></div>
+                </div>
+                <div class="window right">
+                    <div class="window-pane horizontal-pane"></div>
+                    <div class="window-pane vertical-pane"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ground"></div>
+    </div>
+</body>
+</html>

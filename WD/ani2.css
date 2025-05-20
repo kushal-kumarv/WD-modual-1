@@ -1,0 +1,22 @@
+body{
+    background-image: url(https://c.ndtvimg.com/2025-05/k8o5nsl8_virat-kohli-bcci_625x300_12_May_25.jpg?im=FeatureCrop,algorithm=dnn,width=1200,height=738);
+    animation:scrolling linear 10s infinite;
+}
+@keyframes scrolling{
+    20%
+    {
+      background-image:url(https://th.bing.com/th/id/OIP.IGd_4-WsUTGUf_R1DxoP-AAAAA?o=7&cb=iwp2rm=3&rs=1&pid=ImgDetMain);
+    }
+    40%
+    {
+      background-image:url(https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781974740932/naruto-shippuden-the-official-coloring-book-9781974740932_hr.jpg) 
+    }
+    60%
+    {
+      background-image:url(https://th.bing.com/th/id/OIP.ijaFR6MhrrA_nN89DJ-lFwHaD4?cb=iwp2&w=600&h=315&rs=1&pid=ImgDetMain); 
+    }
+    80%
+    {
+      background-image:url(https://th.bing.com/th/id/OIP.LN58cNV6plyUU6DhriWrtQHaKj?cb=iwp2&rs=1&pid=ImgDetMain);
+    }
+}
